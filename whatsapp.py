@@ -13,11 +13,13 @@ navegador.get("http://web.whatsapp.com/")
 while len(navegador.find_elements_by_id("side")) <1:
     time.sleep(1)
 
+print("side")
+
 #FDConnection = Firedec("mensagem.db")
           
 #FDQuery = FDQuery.cursor()
 
-contatos = ['85989926382', '85987444812']
+contatos = ['85989926382', '85987444812', '85999542929']
 
 #for row in FDQuery.execute("SELECT * FROM mensagens"):
 for msg in contatos:
