@@ -6,6 +6,12 @@ import sqlite3 as Firedac
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
+host = 'localhost'
+database = "tar.gdb"
+user='SYSDBA'
+senha='masterkey'
+pasta = 'D:/Bd/Tarefas/'
+
 navegador = webdriver.Chrome()
 
 navegador.get("http://web.whatsapp.com/")
@@ -18,6 +24,23 @@ print("side")
 #FDConnection = Firedec("mensagem.db")
           
 #FDQuery = FDQuery.cursor()
+
+banco_gdb = pasta + database
+conn_gdb = fdb.connect(
+                       host=host,
+                       database=banco_gdb,
+                       port=3050,
+                       user=user,
+                       password=senha,
+                       charset='ISO8859_1')
+
+curr = conn_gdb.cursor()
+curr.execute('SELECT CLI_CONTATO, CLI_CONTA_FONE, CLI_COD_PROX_VENC FROM CLIENTES WHERE CLI_CELULAR IS NOT NULL')
+for c in curr.fetchall():
+   celular = c[0]
+   contato = c[1]
+   serie = c[2]
+
 
 contatos = ['85989926382', '85987444812', '85999542929']
 
